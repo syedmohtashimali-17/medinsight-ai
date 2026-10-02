@@ -1,0 +1,41 @@
+{
+ "report_date": "2026-05-10",
+ "lab_name": "City Diagnostics",
+ "report_type": "CBC",
+ "quality": {
+  "status": "good",
+  "confidence": 0.88
+ },
+ "tests": [
+  {
+   "test_name": "Hb",
+   "value": 12.3,
+   "unit": "g/dL",
+   "reference_range": {
+    "low": 13,
+    "high": 17,
+    "raw": "13-17"
+   }
+  },
+  {
+   "test_name": "Total Leukocyte Count",
+   "value": 7.4,
+   "unit": "x10^3/uL",
+   "reference_range": {
+    "low": 4,
+    "high": 10,
+    "raw": "4-10"
+   }
+  },
+  {
+   "test_name": "PCV",
+   "value": 38,
+   "unit": "%",
+   "reference_range": {
+    "low": 36,
+    "high": 46,
+    "raw": "36-46"
+   }
+  }
+ ]
+}

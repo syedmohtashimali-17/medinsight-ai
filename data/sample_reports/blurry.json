@@ -1,0 +1,10 @@
+{
+ "report_date": null,
+ "lab_name": null,
+ "report_type": "CBC",
+ "quality": {
+  "status": "unreadable",
+  "confidence": 0.2
+ },
+ "tests": []
+}

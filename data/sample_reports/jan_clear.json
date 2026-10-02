@@ -1,0 +1,41 @@
+{
+ "report_date": "2026-01-15",
+ "lab_name": "Example Lab",
+ "report_type": "CBC",
+ "quality": {
+  "status": "good",
+  "confidence": 0.94
+ },
+ "tests": [
+  {
+   "test_name": "Hemoglobin",
+   "value": 10.2,
+   "unit": "g/dL",
+   "reference_range": {
+    "low": 12,
+    "high": 16,
+    "raw": "12-16"
+   }
+  },
+  {
+   "test_name": "WBC",
+   "value": 7.1,
+   "unit": "x10^3/uL",
+   "reference_range": {
+    "low": 4,
+    "high": 11,
+    "raw": "4.0-11.0"
+   }
+  },
+  {
+   "test_name": "Platelets",
+   "value": 260,
+   "unit": "x10^3/uL",
+   "reference_range": {
+    "low": 150,
+    "high": 450,
+    "raw": "150-450"
+   }
+  }
+ ]
+}
