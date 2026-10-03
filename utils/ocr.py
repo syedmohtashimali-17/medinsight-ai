@@ -41,8 +41,10 @@ logger = logging.getLogger(__name__)
 # Configuration & documented thresholds
 # --------------------------------------------------------------------------
 # The plan pinned gemini-2.5-flash, but Google now returns 404 for it ("no longer
-# available to new users", Oct 2026). Override with GEMINI_MODEL if this changes again.
-DEFAULT_MODEL = "gemini-3.8-flash"
+# available to new users", Oct 2026). gemini-3.8-flash worked but returned 503 "high
+# demand" during testing, so we default to gemini-3.5-flash, which Google lists as a
+# stable model. Override with GEMINI_MODEL (e.g. gemini-3.8-flash, gemini-3.7-flash).
+DEFAULT_MODEL = "gemini-3.5-flash"
 
 # Retry policy: attempt 1 -> wait ~2s -> attempt 2 -> wait ~4s -> attempt 3.
 MAX_ATTEMPTS = 3
