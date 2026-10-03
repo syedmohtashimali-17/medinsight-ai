@@ -1,4 +1,5 @@
 """MedInsight AI - Streamlit UI (P1). Follows Execution Plan v2.0, Sec. 9, 11, 12."""
+from utils.display import pretty_unit
 import html
 
 import pandas as pd
