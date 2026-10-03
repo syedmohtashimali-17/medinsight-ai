@@ -73,6 +73,15 @@ def test_explain_with_malicious_llm():
     out = ai.explain_report(REPORT, "Roman Urdu")
     assert "anemia" not in out["explanations"][0]["explanation"].lower()
 
+def test_filter_called_again_without_report():
+    # app.py may call filter_explanations(b) with one argument (stub signature)
+    b = {"language": "English", "explanations": [
+        {"test_name": "Hemoglobin", "status": "Below Range",
+         "explanation": "Your 10.2 is below the lab range."}]}
+    assert "10.2" in filter_explanations(b)["explanations"][0]["explanation"]
+    b["explanations"][0]["explanation"] = "You have anemia."
+    assert "anemia" not in filter_explanations(b)["explanations"][0]["explanation"].lower()
+
 def test_unit_numbers_and_bad_shapes():
     ai._CACHE.clear()
     r = {"quality": None, "tests": [
