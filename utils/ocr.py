@@ -40,7 +40,9 @@ logger = logging.getLogger(__name__)
 # --------------------------------------------------------------------------
 # Configuration & documented thresholds
 # --------------------------------------------------------------------------
-DEFAULT_MODEL = "gemini-2.5-flash"  # plan Sec. 6/8; override with GEMINI_MODEL
+# The plan pinned gemini-2.5-flash, but Google now returns 404 for it ("no longer
+# available to new users", Oct 2026). Override with GEMINI_MODEL if this changes again.
+DEFAULT_MODEL = "gemini-3.8-flash"
 
 # Retry policy: attempt 1 -> wait ~2s -> attempt 2 -> wait ~4s -> attempt 3.
 MAX_ATTEMPTS = 3
@@ -238,25 +240,29 @@ def _pdf_first_page_to_png(file_bytes: bytes) -> bytes:
 # --------------------------------------------------------------------------
 # Gemini call + retry
 # --------------------------------------------------------------------------
-def _get_api_key() -> Optional[str]:
-    """GEMINI_API_KEY from env/.env locally, or Streamlit Secrets when deployed."""
+def _get_setting(name: str) -> Optional[str]:
+    """Read a setting from env/.env locally, or Streamlit Secrets when deployed."""
     try:
         from dotenv import load_dotenv
         load_dotenv()  # does not override variables already set
     except ImportError:
         pass
-    key = os.getenv("GEMINI_API_KEY")
-    if key:
-        return key
+    value = os.getenv(name)
+    if value:
+        return value
     try:
         import streamlit as st
-        return st.secrets["GEMINI_API_KEY"]
+        return st.secrets[name]
     except Exception:  # no streamlit / no secrets file / key missing
         return None
 
 
+def _get_api_key() -> Optional[str]:
+    return _get_setting("GEMINI_API_KEY")
+
+
 def _get_model_name() -> str:
-    return os.getenv("GEMINI_MODEL") or DEFAULT_MODEL
+    return _get_setting("GEMINI_MODEL") or DEFAULT_MODEL
 
 
 def _get_client(api_key: str):
