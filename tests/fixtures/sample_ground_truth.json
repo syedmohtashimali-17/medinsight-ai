@@ -1,0 +1,258 @@
+[
+  {
+    "file": "cbc_jan_clear.png",
+    "report_date": "2026-01-15",
+    "lab_name": "Example Lab",
+    "tests": [
+      {
+        "test_name": "Hemoglobin",
+        "value": 10.2,
+        "unit": "g/dL",
+        "raw": "12.0-16.0"
+      },
+      {
+        "test_name": "WBC",
+        "value": 7.8,
+        "unit": "x10^3/uL",
+        "raw": "4.0 - 11.0"
+      },
+      {
+        "test_name": "RBC",
+        "value": 4.1,
+        "unit": "x10^6/uL",
+        "raw": "4.2-5.4"
+      },
+      {
+        "test_name": "Hematocrit",
+        "value": 33.0,
+        "unit": "%",
+        "raw": "36.0-46.0"
+      },
+      {
+        "test_name": "MCV",
+        "value": 80.5,
+        "unit": "fL",
+        "raw": "80-100"
+      },
+      {
+        "test_name": "MCH",
+        "value": 27.0,
+        "unit": "pg",
+        "raw": "27-33"
+      },
+      {
+        "test_name": "MCHC",
+        "value": 31.5,
+        "unit": "g/dL",
+        "raw": "32-36"
+      },
+      {
+        "test_name": "Platelets",
+        "value": 245,
+        "unit": "x10^3/uL",
+        "raw": "150-450"
+      },
+      {
+        "test_name": "Neutrophils",
+        "value": 58,
+        "unit": "%",
+        "raw": "40-75"
+      },
+      {
+        "test_name": "Lymphocytes",
+        "value": 32,
+        "unit": "%",
+        "raw": "20-45"
+      }
+    ]
+  },
+  {
+    "file": "cbc_mar_clear.pdf",
+    "report_date": "2026-03-15",
+    "lab_name": "Example Lab",
+    "tests": [
+      {
+        "test_name": "Hemoglobin",
+        "value": 11.4,
+        "unit": "g/dL",
+        "raw": "12.0-16.0"
+      },
+      {
+        "test_name": "WBC",
+        "value": 7.2,
+        "unit": "x10^3/uL",
+        "raw": "4.0 - 11.0"
+      },
+      {
+        "test_name": "RBC",
+        "value": 4.3,
+        "unit": "x10^6/uL",
+        "raw": "4.2-5.4"
+      },
+      {
+        "test_name": "Hematocrit",
+        "value": 35.1,
+        "unit": "%",
+        "raw": "36.0-46.0"
+      },
+      {
+        "test_name": "MCV",
+        "value": 81.2,
+        "unit": "fL",
+        "raw": "80-100"
+      },
+      {
+        "test_name": "MCH",
+        "value": 27.6,
+        "unit": "pg",
+        "raw": "27-33"
+      },
+      {
+        "test_name": "MCHC",
+        "value": 32.4,
+        "unit": "g/dL",
+        "raw": "32-36"
+      },
+      {
+        "test_name": "Platelets",
+        "value": 262,
+        "unit": "x10^3/uL",
+        "raw": "150-450"
+      },
+      {
+        "test_name": "Neutrophils",
+        "value": 56,
+        "unit": "%",
+        "raw": "40-75"
+      },
+      {
+        "test_name": "Lymphocytes",
+        "value": 34,
+        "unit": "%",
+        "raw": "20-45"
+      }
+    ]
+  },
+  {
+    "file": "cbc_other_layout.png",
+    "report_date": "2026-02-15",
+    "lab_name": "Sample Diagnostics Centre (Fictional)",
+    "tests": [
+      {
+        "test_name": "Haemoglobin (Hb)",
+        "value": 13.1,
+        "unit": "g/dL",
+        "raw": "13.0 - 17.0"
+      },
+      {
+        "test_name": "Total Leucocyte Count (TLC)",
+        "value": 9.4,
+        "unit": "10^3/uL",
+        "raw": "4.0 - 10.0"
+      },
+      {
+        "test_name": "Red Blood Cell Count",
+        "value": 4.9,
+        "unit": "10^6/uL",
+        "raw": "4.5 - 5.5"
+      },
+      {
+        "test_name": "Packed Cell Volume (PCV)",
+        "value": 41.0,
+        "unit": "%",
+        "raw": "40 - 50"
+      },
+      {
+        "test_name": "Platelet Count",
+        "value": 310,
+        "unit": "10^3/uL",
+        "raw": "150 - 410"
+      },
+      {
+        "test_name": "Basophils",
+        "value": 1,
+        "unit": "%",
+        "raw": "<2"
+      },
+      {
+        "test_name": "Eosinophils",
+        "value": 3,
+        "unit": "%",
+        "raw": "1 - 6"
+      }
+    ]
+  },
+  {
+    "file": "cbc_blurry_dark.jpg",
+    "expected_quality": "unreadable_or_low",
+    "tests": []
+  },
+  {
+    "file": "cbc_missing_range.png",
+    "report_date": "2026-01-15",
+    "lab_name": "Example Lab",
+    "tests": [
+      {
+        "test_name": "Hemoglobin",
+        "value": 10.2,
+        "unit": "g/dL",
+        "raw": null
+      },
+      {
+        "test_name": "WBC",
+        "value": 7.8,
+        "unit": "x10^3/uL",
+        "raw": "4.0 - 11.0"
+      },
+      {
+        "test_name": "RBC",
+        "value": 4.1,
+        "unit": "x10^6/uL",
+        "raw": "4.2-5.4"
+      },
+      {
+        "test_name": "Hematocrit",
+        "value": 33.0,
+        "unit": "%",
+        "raw": "36.0-46.0"
+      },
+      {
+        "test_name": "MCV",
+        "value": 80.5,
+        "unit": "fL",
+        "raw": "80-100"
+      },
+      {
+        "test_name": "MCH",
+        "value": 27.0,
+        "unit": "pg",
+        "raw": "27-33"
+      },
+      {
+        "test_name": "MCHC",
+        "value": 31.5,
+        "unit": "g/dL",
+        "raw": "32-36"
+      },
+      {
+        "test_name": "Platelets",
+        "value": 245,
+        "unit": "x10^3/uL",
+        "raw": null
+      },
+      {
+        "test_name": "Neutrophils",
+        "value": 58,
+        "unit": "%",
+        "raw": "40-75"
+      },
+      {
+        "test_name": "Lymphocytes",
+        "value": 32,
+        "unit": "%",
+        "raw": "20-45"
+      }
+    ],
+    "note": "Hemoglobin and Platelets have NO printed range: expect raw/low/high = null"
+  }
+]
