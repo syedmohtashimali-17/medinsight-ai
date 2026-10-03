@@ -190,8 +190,8 @@ def results():
         rr = t.get("reference_range") or {}
         rows.append({
             "Test": t["test_name"],
-            "Value": t["value"] if t["value"] is not None else "Not found",
-            "Unit": t.get("unit") or "",
+            "Value": f"{t['value']:.10g}" if t["value"] is not None else "Not found",
+            "Unit": pretty_unit(t.get("unit")) or "",
             "Lab reference range": rr.get("raw") or "Not printed",
             "Status": status_by_test.get(t["test_name"], "Cannot Determine"),
         })
