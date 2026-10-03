@@ -1,5 +1,4 @@
-
-
+"""utils/safety.py - Safety layer (P3).
 Deterministic safety layer for MedInsight AI. No LLM calls in this file.
 
 Public API
