@@ -7,11 +7,15 @@ import streamlit as st
 
 from utils.ocr import extract_report
 from utils.ai import explain_report
-from utils.comparison import compare_reports, build_trend_data
+from utils.comparison import (compare_reports, build_trend_data,
+                              is_demo_mode, load_sample_report)
+from utils.auth import require_login, logout_button
 
 DISCLAIMER = ("This tool helps explain laboratory information and does not replace "
               "professional medical advice or diagnosis.")
 LANGUAGES = ["English", "Roman Urdu", "Urdu"]
+DEMO = is_demo_mode()  # streamlit run app.py -- --demo-mode  (no API calls)
+DEMO_FILES = ["jan_clear", "mar_clear", "other_lab"]
 STATUS_COLORS = {
     "Within Range": ("#d4edda", "#155724"),
     "Below Range": ("#fff3cd", "#856404"),
@@ -79,7 +83,11 @@ def reset():
 def scan(uploaded, language):
     """extract_report -> quality check -> explain_report. True on success."""
     with st.spinner("Scanning report..."):
-        report = extract_report(uploaded.getvalue(), uploaded.name)
+        if DEMO:  # sample JSONs, one per scan, no API call
+            n = min(len(st.session_state.reports), len(DEMO_FILES) - 1)
+            report = load_sample_report(DEMO_FILES[n])
+        else:
+            report = extract_report(uploaded.getvalue(), uploaded.name)
     status = report.get("quality", {}).get("status", "unreadable")
     if status in ("low", "unreadable"):
         st.session_state.quality_error = status
@@ -142,7 +150,7 @@ def upload():
     if language == "Urdu":
         st.caption("Urdu is best-effort. Roman Urdu is recommended.")
     c1, c2 = st.columns(2)
-    if c1.button("Scan", type="primary", disabled=file is None):
+    if c1.button("Scan", type="primary", disabled=file is None and not DEMO):
         if scan(file, language):
             go("results")
             st.rerun()
@@ -221,7 +229,7 @@ def compare():
     file = st.file_uploader("Second report (PNG, JPG or PDF)", type=["png", "jpg", "jpeg", "pdf"],
                             key="second_uploader")
     language = st.session_state.explanations[-1].get("language", "English")
-    if st.button("Scan", type="primary", disabled=file is None, key="scan_second"):
+    if st.button("Scan", type="primary", disabled=file is None and not DEMO, key="scan_second"):
         if scan(file, language):
             st.rerun()
     quality_error_box()
@@ -269,7 +277,11 @@ def trend():
 # ---------------------------------------------------------------- main
 st.set_page_config(page_title="MedInsight AI", layout="wide")
 st.markdown(CSS, unsafe_allow_html=True)
+require_login()   # login gate: nothing below runs until the user is logged in
 init_state()
 nav()
+logout_button()
+if DEMO:
+    st.sidebar.caption("Demo mode: sample data, no API calls")
 {"welcome": welcome, "upload": upload, "results": results,
  "compare": compare, "trend": trend}[st.session_state.current_page]()
