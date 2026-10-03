@@ -1,4 +1,4 @@
-
+"""utils/ai.py - Gemini explanation layer (P3).
 
 explain_report(report: dict, language: str) -> dict   # returns JSON-B
 
