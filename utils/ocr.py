@@ -331,6 +331,7 @@ def _generate_with_retry(client, model: str, image_bytes: bytes, mime_type: str)
                     ) from exc
                 raise ExtractionError("api_error", f"Gemini request failed: {exc}") from exc
             if attempt == MAX_ATTEMPTS:
+                logger.warning("Gemini gave up after %d attempts (code=%s): %.300s", attempt, code, exc)
                 if code == 429:
                     raise ExtractionError(
                         "rate_limited", "The AI service is busy right now. Please wait a minute and try again."
@@ -339,7 +340,7 @@ def _generate_with_retry(client, model: str, image_bytes: bytes, mime_type: str)
                     "api_unavailable", "The AI service is temporarily unavailable. Please try again."
                 ) from exc
             delay = BACKOFF_BASE_SECONDS * (2 ** (attempt - 1)) + random.uniform(0, 0.5)
-            logger.warning("Gemini error (code=%s), retry %d/%d in %.1fs", code, attempt, MAX_ATTEMPTS - 1, delay)
+            logger.warning("Gemini error (code=%s): %.200s -- retry %d/%d in %.1fs", code, exc, attempt, MAX_ATTEMPTS - 1, delay)
             _sleep(delay)
     raise ExtractionError("api_error", "Gemini request failed.")  # pragma: no cover
 
